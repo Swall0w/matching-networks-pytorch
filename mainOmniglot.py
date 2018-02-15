@@ -36,11 +36,11 @@ obj_oneShotBuilder.build_experiment(batch_size=batch_size, num_channels=1, lr=1e
 with tqdm.tqdm(total=total_train_batches) as pbar_e:
     for e in range(total_epochs):
         total_c_loss, total_accuracy = obj_oneShotBuilder.run_training_epoch(total_train_batches)
-        print("Epoch {}: train_loss:{} train_accuracy:{}".format(e, total_c_loss, total_accuracy))
+        print(("Epoch {}: train_loss:{} train_accuracy:{}".format(e, total_c_loss, total_accuracy)))
         total_val_c_loss, total_val_accuracy = obj_oneShotBuilder.run_val_epoch(total_val_batches)
-        print("Epoch {}: val_loss:{} val_accuracy:{}".format(e, total_val_c_loss, total_val_accuracy))
+        print(("Epoch {}: val_loss:{} val_accuracy:{}".format(e, total_val_c_loss, total_val_accuracy)))
         if total_val_accuracy>best_val_acc:
             best_val_acc = total_val_accuracy
             total_test_c_loss, total_test_accuracy = obj_oneShotBuilder.run_test_epoch(total_test_batches)
-            print("Epoch {}: test_loss:{} test_accuracy:{}".format(e, total_test_c_loss, total_test_accuracy))
+            print(("Epoch {}: test_loss:{} test_accuracy:{}".format(e, total_test_c_loss, total_test_accuracy)))
         pbar_e.update(1)
